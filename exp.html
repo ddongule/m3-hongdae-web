@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Experimental</title>
+    <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .yearly-map {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+    .yearly-map li {
+      position: absolute;
+      margin: 0;
+      padding: 0;
+    }
+
+    .yearly-map h2 {
+      position: absolute;
+      left: 2rem;
+      top: 1rem;
+    }
+
+    .yearly-map li img {
+      display: block;
+      width: 100%;
+    }
+
+    .yearly-map li {
+      display: none;
+    }
+    .yearly-map li.visible {
+      display: block;
+    }
+    </style>
+  </head>
+  <body>
+
+
+
+
+  <ul class="yearly-map">
+    <li><img src="images/yearly/201203_log-1.jpg" alt=""><h4>2012.3</h4></li>
+    <li><img src="images/yearly/201204_log-1.jpg" alt=""><h4>2012.4</h4></li>
+    <li><img src="images/yearly/201301_log-1.jpg" alt=""><h4>2013.1</h4></li>
+    <li><img src="images/yearly/201302_log-1.jpg" alt=""><h4>2013.2</h4></li>
+    <li><img src="images/yearly/201303_log-1.jpg" alt=""><h4>2013.3</h4></li>
+    <li><img src="images/yearly/201304_log-1.jpg" alt=""><h4>2013.4</h4></li>
+    <li><img src="images/yearly/201401_log-1.jpg" alt=""><h4>2014.1</h4></li>
+    <li><img src="images/yearly/201402_log-1.jpg" alt=""><h4>2014.2</h4></li>
+    <li><img src="images/yearly/201403_log-1.jpg" alt=""><h4>2014.3</h4></li>
+    <li><img src="images/yearly/201404_log-1.jpg" alt=""><h4>2014.4</h4></li>
+    <li><img src="images/yearly/201501_log-1.jpg" alt=""><h4>2015.1</h4></li>
+    <li><img src="images/yearly/201502_log-1.jpg" alt=""><h4>2015.2</h4></li>
+    <li><img src="images/yearly/201503_log-1.jpg" alt=""><h4>2015.3</h4></li>
+    <li><img src="images/yearly/201504_log-1.jpg" alt=""><h4>2015.4</h4></li>
+    <li><img src="images/yearly/201601_log-1.jpg" alt=""><h4>2016.1</h4></li>
+    <li><img src="images/yearly/201602_log-1.jpg" alt=""><h4>2016.2</h4></li>
+    <li><img src="images/yearly/201603_log-1.jpg" alt=""><h4>2016.3</h4></li>
+    <li><img src="images/yearly/201604_log-1.jpg" alt=""><h4>2016.4</h4></li>
+    <li><img src="images/yearly/201701_log-1.jpg" alt=""><h4>2017.1</h4></li>
+    <li><img src="images/yearly/201702_log-1.jpg" alt=""><h4>2017.2</h4></li>
+    <li><img src="images/yearly/201703_log-1.jpg" alt=""><h4>2017.3</h4></li>
+    <li><img src="images/yearly/201704_log-1.jpg" alt=""><h4>2017.4</h4></li>
+    <li><img src="images/yearly/201801_log-1.jpg" alt=""><h4>2018.1</h4></li>
+    <li><img src="images/yearly/201802_log-1.jpg" alt=""><h4>2018.2</h4></li>
+  </ul>
+
+  <script>
+  var lis = document.querySelectorAll(".yearly-map li");
+  var index = 0;
+  var paused = false;
+
+  window.addEventListener('load', function() {
+    nextSlide();
+
+    document.querySelector('.yearly-map').addEventListener('mouseover', function() {
+      paused = true;
+    });
+    document.querySelector('.yearly-map').addEventListener('mouseleave', function() {
+      paused = false;
+    });
+  })
+
+  function nextSlide() {
+    window.setTimeout(nextSlide, 500);
+    if(paused) return;
+
+    for(var i = 0; i < lis.length; i++) {
+      if(i === index) {
+        lis[i].setAttribute("class", "visible");
+      } else {
+        lis[i].setAttribute("class", "");
+      }
+    }
+
+    index = (index + 1) % lis.length;
+  }
+  </script>
+  </body>
+</html>
